@@ -1,4 +1,8 @@
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 
 public class Lecture6Exercises {
 
@@ -8,7 +12,11 @@ public class Lecture6Exercises {
      *   lecture 6 page  16
      */
     public long calculateEvenSum(int[] arr) {
-        return 0L;
+        long answer = 0;
+        for(int i = 1; i < arr.length; i += 2){
+            answer += arr[i];
+        }
+        return answer;
     }
 
     /*
@@ -17,7 +25,11 @@ public class Lecture6Exercises {
      *   lecture 6 page 16
      */
     public int[] reverseArray(int[] arr) {
-        return null;
+        int[] reverse = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            reverse[i] = arr[arr.length - i - 1];
+        }
+        return reverse;
     }
 
     /*
@@ -34,7 +46,15 @@ public class Lecture6Exercises {
      *   lecture 6 page 30
      */
     public List<List<String>> arrayToList(String[][] names) {
-        return null;
+
+        int n = 20;
+        List<List<String>> lsd = new ArrayList<List<String>>();
+        List<String> x = new ArrayList<String>();
+        for(int i = 0; i < n; i++){
+            x.addAll(Arrays.asList(names[i]).subList(0, n));
+        }
+        lsd.add(x);
+        return lsd;
     }
 
     /*
@@ -43,7 +63,26 @@ public class Lecture6Exercises {
      *   lecture 6 page 30
      */
     public List<Integer> primeFactors(int n) {
-        return null;
+        List<Integer> ans = new ArrayList<Integer>();
+        double x ,y;
+        int counter = 0;
+        for ( int i = 1 ; i <= n;i++){
+            for (int j = 0; j < i; j++) {
+
+                x = i / j;
+                if (Math.floor(x) == x) {
+                    counter++;
+                }
+            }
+            if(counter==2){
+                y = n / i;
+                if(Math.floor(y) ==y){
+                    int z = (int)y;
+                    ans.add(z);
+                }
+            }
+        }
+        return ans;
     }
 
     /*
@@ -51,6 +90,12 @@ public class Lecture6Exercises {
      *   lecture 6 page 30
      */
     public List<String> extractWord(String line) {
-        return null;
+        line = line.replaceAll("[!?,()-+*=@#$%^&]", "");
+        List<String> words = new ArrayList<>();
+        for (String val: line.split(" ")){
+            words.add(val);
+        }
+        return words;
     }
+
 }
